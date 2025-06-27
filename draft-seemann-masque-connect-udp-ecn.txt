@@ -2,14 +2,14 @@
 
 
 
-WG Working Group                                              Y. N. Here
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                               21 May 2025
-Expires: 22 November 2025
+MASQUE                                                        M. Seemann
+Internet-Draft                                                 Smallstep
+Intended status: Standards Track                            27 June 2025
+Expires: 29 December 2025
 
 
-                           TODO - Your title
-                  draft-todo-yourname-protocol-latest
+                  Using ECN when Proxying UDP in HTTP
+              draft-seemann-masque-connect-udp-ecn-latest
 
 Abstract
 
@@ -20,16 +20,19 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-todo-yourname-
-   protocol/.
+   https://martenseeman.github.io/draft-seemann-masque-connect-udp-ecn/
+   draft-seemann-masque-connect-udp-ecn.html.  Status information for
+   this document may be found at https://datatracker.ietf.org/doc/draft-
+   seemann-masque-connect-udp-ecn/.
 
-   Discussion of this document takes place on the WG Working Group
-   mailing list (mailto:WG@example.com), which is archived at
-   https://example.com/WG.
+   Discussion of this document takes place on the MASQUE Working Group
+   mailing list (mailto:masque@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/masque/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/masque/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/USER/REPO.
+   https://github.com/marten-seemann/draft-seemann-masque-connect-udp-
+   ecn.
 
 Status of This Memo
 
@@ -46,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 November 2025.
+   This Internet-Draft will expire on 29 December 2025.
 
 Copyright Notice
 
@@ -109,6 +112,6 @@ Acknowledgments
 
 Author's Address
 
-   Your Name Here
-   Your Organization Here
-   Email: your.email@example.com
+   Marten Seemann
+   Smallstep
+   Email: martenseemann@gmail.com
