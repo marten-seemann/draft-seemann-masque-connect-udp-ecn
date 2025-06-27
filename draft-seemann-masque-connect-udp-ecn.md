@@ -42,11 +42,13 @@ This document describes how to proxy the ECN bits when proxying UDP in HTTP.
 
 # Introduction
 
+Explicit Congestion Notification marking {{!RFC3168}} uses two bits in the IP
+header to signal congestion from a network to endpoints.
+
 {{!RFC9298}} describes how UDP datagrams can be proxied in HTTP. This allows the
 proxying of the payload of UDP datagrams, however, it is not possible to proxy
-the ECN bits, thereby effectively bleaching ECN. This document defines an
-extension to {{!RFC9298}} that allows the proxying of the ECN bits without
-imposing any encoding overhead.
+the ECN bits. This document defines an extension to {{!RFC9298}} that allows the
+proxying of the ECN bits without imposing any encoding overhead.
 
 When establishing a tunnel, the client registers four context identifiers, one
 for each ECN marking. These context identifiers are then used to:
