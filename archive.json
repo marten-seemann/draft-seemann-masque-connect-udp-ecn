@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-26T00:12:55.514552+00:00",
+  "timestamp": "2025-06-29T00:14:22.592838+00:00",
   "repo": "marten-seemann/draft-seemann-masque-connect-udp-ecn",
   "labels": [
     {
@@ -49,6 +49,31 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOOtqrbM69q2_A",
+      "title": "reevaluate use of Context IDs",
+      "url": "https://github.com/marten-seemann/draft-seemann-masque-connect-udp-ecn/issues/1",
+      "state": "OPEN",
+      "author": "marten-seemann",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Context IDs allow a zero-overhead encoding of the ECN bits (provided the client chooses values that can be encoded as a 1-byte QUIC varint). However, it's not clear how one would use this extension with CONNECT-UDP Listen, which uses context IDs to define compression contexts.",
+      "createdAt": "2025-06-27T09:37:36Z",
+      "updatedAt": "2025-06-27T10:10:44Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "marten-seemann",
+          "authorAssociation": "OWNER",
+          "body": "Alternatively, we could define that negotiating the extension adds a single byte at the beginning of the datagram, no matter which context ID is used.\n\nThis would add an overhead of 1 byte. Of this first byte, we'd leave 6 bits undefined, so that future extensions could use them without incurring any overhead.",
+          "createdAt": "2025-06-27T10:10:44Z",
+          "updatedAt": "2025-06-27T10:10:44Z"
+        }
+      ]
+    }
+  ],
   "pulls": []
 }
