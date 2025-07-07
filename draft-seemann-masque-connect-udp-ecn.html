@@ -1166,6 +1166,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-negotiating-extension-and-r" class="internal xref">Negotiating Extension and Registration of Context Identifiers</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-optimistic-sending-of-ecn-m" class="internal xref">Optimistic Sending of ECN Markings</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
@@ -1285,6 +1290,24 @@ same QUIC Variable-Length Integer encoding (see Section 16 of <span>[<a href="#R
 <p id="section-4-7">If the proxy wants to disable proxying of ECN markings, it either omits the
 "Proxy-ECN" header field or sets the value to "?0". This also refuses the
 registration of the context IDs.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<div id="optimistic-sending-of-ecn-markings">
+<section id="section-4.1">
+        <h3 id="name-optimistic-sending-of-ecn-m">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-optimistic-sending-of-ecn-m" class="section-name selfRef">Optimistic Sending of ECN Markings</a>
+        </h3>
+<p id="section-4.1-1"><span>[<a href="#RFC9298" class="cite xref">RFC9298</a>]</span> allows the client to send UDP datagrams to the proxy without
+waiting for the proxy to send a response. This is useful for applications that
+need to send UDP datagrams to the proxy as soon as possible.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">When sending datagrams to the proxy, the client <span class="bcp14">MAY</span> optimistically use the
+context identifiers proposed in the "Proxy-ECN" header field. However, these
+datagrams will be dropped if the server does not enable ECN mode. This is
+therefore only recommended if the client has prior knowledge that the server
+likely supports ECN mode.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">A client that wishes to avoid the loss of packets if ECN mode is not enabled
+<span class="bcp14">SHOULD NOT</span> optimistically use the context identifiers proposed in the
+"Proxy-ECN" header field.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="security-considerations">
