@@ -113,6 +113,22 @@ If the proxy wants to disable proxying of ECN markings, it either omits the
 "Proxy-ECN" header field or sets the value to "?0". This also refuses the
 registration of the context IDs.
 
+## Optimistic Sending of ECN Markings
+
+{{!RFC9298}} allows the client to send UDP datagrams to the proxy without
+waiting for the proxy to send a response. This is useful for applications that
+need to send UDP datagrams to the proxy as soon as possible.
+
+When sending datagrams to the proxy, the client MAY optimistically use the
+context identifiers proposed in the "Proxy-ECN" header field. However, these
+datagrams will be dropped if the server does not enable ECN mode. This is
+therefore only recommended if the client has prior knowledge that the server
+likely supports ECN mode.
+
+A client that wishes to avoid the loss of packets if ECN mode is not enabled
+SHOULD NOT optimistically use the context identifiers proposed in the
+"Proxy-ECN" header field.
+
 
 # Security Considerations
 
