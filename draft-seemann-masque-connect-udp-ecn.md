@@ -91,16 +91,17 @@ To support ECN mode, both clients and proxies need to include the "Proxy-ECN"
 header field. This indicates support for ECN mode and registers the context
 IDs.
 
-    proxy-ecn = ?1; not-ect = 2; ect1 = 100; ect0 = 1234; ce = 42
+    proxy-ecn = ?1; ect1 = 100; ect0 = 1234; ce = 42
 
 "Proxy-ECN" is an Item Structured Header {{!RFC8941}}. Its value MUST be a
 boolean.
 
 If the client wants to enable proxying of ECN markings, it sets the value to
-"?1". The client MUST add the following four parameters: "not-ect", "ect1",
-"ect0", and "ce", each of which is of type sf-integer. The values are used to
-register the context IDs for the different ECN markings. The numbers MUST be even
-according to the rules for context identifiers in Section 4 of {{!RFC9298}}.
+"?1". The client MUST add the following three parameters: "ect1", "ect0", and
+"ce", each of which is of type sf-integer. The Not-ECT context ID always uses
+context ID 0. The values are used to register the context IDs for the different
+ECN markings. The numbers MUST be even according to the rules for context
+identifiers in Section 4 of {{!RFC9298}}.
 
 It is RECOMMENDED to use context identifier values that can be encoded using the
 same QUIC Variable-Length Integer encoding (see Section 16 of {{!RFC9000}}).
