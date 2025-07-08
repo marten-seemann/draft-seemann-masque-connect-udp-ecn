@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-06T00:14:22.107109+00:00",
+  "timestamp": "2025-07-08T00:12:59.282715+00:00",
   "repo": "marten-seemann/draft-seemann-masque-connect-udp-ecn",
   "labels": [
     {
@@ -86,17 +86,67 @@
       "id": "I_kwDOOtqrbM6-F2eC",
       "title": "elaborate on context ID usage when optimistically sending packets",
       "url": "https://github.com/marten-seemann/draft-seemann-masque-connect-udp-ecn/issues/2",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "marten-seemann",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "This is when sending DATAGRAMs right after sending the CONNECT request, before receiving the proxy's response.\n\nOptions:\n* play it safe: only use context ID 0\n* optimistically send DATAGRAMs with non-zero context IDs: worst case scenario these packets are getting dropped (and the rejection of the extension is an explicit signal to retransmit these packets, if desired)",
       "createdAt": "2025-06-30T16:53:22Z",
-      "updatedAt": "2025-06-30T16:53:22Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-07T16:45:33Z",
+      "closedAt": "2025-07-07T16:45:32Z",
       "comments": []
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 3,
+      "id": "PR_kwDOOtqrbM6dy4ig",
+      "title": "describe how to optimistically set ECN markings",
+      "url": "https://github.com/marten-seemann/draft-seemann-masque-connect-udp-ecn/pull/3",
+      "state": "MERGED",
+      "author": "marten-seemann",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #2.",
+      "createdAt": "2025-07-07T16:43:49Z",
+      "updatedAt": "2025-07-07T16:45:32Z",
+      "baseRepository": "marten-seemann/draft-seemann-masque-connect-udp-ecn",
+      "baseRefName": "main",
+      "baseRefOid": "fb4afbb5c7a990d1b440b6b00f884357b14eab86",
+      "headRepository": "marten-seemann/draft-seemann-masque-connect-udp-ecn",
+      "headRefName": "optimistic-ecn",
+      "headRefOid": "8717ef0101108ee9ef61074a210f6467032a221d",
+      "closedAt": "2025-07-07T16:45:32Z",
+      "mergedAt": "2025-07-07T16:45:32Z",
+      "mergedBy": "marten-seemann",
+      "mergeCommit": {
+        "oid": "9a0fecd76458d72bb624098608fb49a5a1361389"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOOtqrbM6yfvoQ",
+          "commit": {
+            "abbreviatedOid": "8717ef0"
+          },
+          "author": "copilot-pull-request-reviewer",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "## Pull Request Overview\n\nThis PR adds guidance on sending ECN-marked UDP datagrams to a proxy optimistically, covering when it\u2019s safe and when to avoid it.\n\n- Introduces a new \u201cOptimistic Sending of ECN Markings\u201d section  \n- Describes that packets may be dropped if ECN mode is unsupported  \n- Advises clients on when to use or avoid optimistic ECN context identifiers\n\n\n<details>\n<summary>Comments suppressed due to low confidence (2)</summary>\n\n**draft-seemann-masque-connect-udp-ecn.md:118**\n* Ensure that RFC9298 is listed in the References section; otherwise the {{!RFC9298}} anchor won\u2019t resolve.\n```\n{{!RFC9298}} allows the client to send UDP datagrams to the proxy without\n```\n**draft-seemann-masque-connect-udp-ecn.md:124**\n* [nitpick] Consider adding guidance on how the client should detect lack of ECN support and retry without ECN markings to recover from dropped packets.\n```\ndatagrams will be dropped if the server does not enable ECN mode. This is\n```\n</details>\n\n",
+          "createdAt": "2025-07-07T16:44:20Z",
+          "updatedAt": "2025-07-07T16:44:21Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "[nitpick] This guidance overlaps with the recommendation in lines 122\u2013127; consider merging the positive and negative instructions into one concise paragraph to reduce redundancy.\n```suggestion\ncontext identifiers proposed in the \"Proxy-ECN\" header field if it has prior\nknowledge that the server likely supports ECN mode. However, to avoid the\nloss of packets if ECN mode is not enabled, the client SHOULD NOT use these\ncontext identifiers optimistically without such prior knowledge.\n```",
+              "createdAt": "2025-07-07T16:44:20Z",
+              "updatedAt": "2025-07-07T16:44:21Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
